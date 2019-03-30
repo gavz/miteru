@@ -10,11 +10,13 @@ RSpec.describe Miteru::Downloader do
     before { WebMock.disable! }
     after { WebMock.enable! }
 
+    let(:url) { "#{base_url}/has_kit" }
+
     context "when it runs once" do
       it "should download a file" do
         kits = [
-          Miteru::Kit.new(base_url: "http://#{host}:#{port}/has_kit", link: "test.zip"),
-          Miteru::Kit.new(base_url: "http://#{host}:#{port}/has_kit", link: "test.tar")
+          Miteru::Kit.new(base_url: url, link: "test.zip"),
+          Miteru::Kit.new(base_url: url, link: "test.tar")
         ]
         expect(Dir.glob("#{base_dir}/*.zip").empty?).to be(true)
 
@@ -37,7 +39,7 @@ RSpec.describe Miteru::Downloader do
     context "when it runs multiple times" do
       it "should remove duplicated files" do
         kits = [
-          Miteru::Kit.new(base_url: "http://#{host}:#{port}/has_kit", link: "test.zip")
+          Miteru::Kit.new(base_url: url, link: "test.zip")
         ]
         expect(Dir.glob("#{base_dir}/*.zip").empty?).to be(true)
 

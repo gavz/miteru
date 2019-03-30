@@ -11,7 +11,7 @@ RSpec.describe Miteru::HTTPClient do
 
     it "should download a file" do
       expect(Dir.glob("#{base_dir}/*.zip").empty?).to be(true)
-      dst = subject.download("http://#{host}:#{port}/has_kit/test.zip", @path)
+      dst = subject.download("#{base_url}/has_kit/test.zip", @path)
       expect(File.exist?(dst)).to eq(true)
     end
   end

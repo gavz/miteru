@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe Miteru::Kit do
-
   subject { Miteru::Kit.new(base_url: "http://test.com", link: "/test.zip") }
 
   describe "#basename" do
